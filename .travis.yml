@@ -9,14 +9,14 @@ script:
   - docker run aghabekyan/react-test npm test
 
 after_success:
-  - docker build -t aghabekyan/multi-client ./client
-  - docker build -t aghabekyan/multi-nginx ./nginx
-  - docker build -t aghabekyan/multi-server ./server
-  - docker build -t aghabekyan/multi-worker ./worker
+  - docker build -t aghabekyan374/multi-client ./client
+  - docker build -t aghabekyan374/multi-nginx ./nginx
+  - docker build -t aghabekyan374/multi-server ./server
+  - docker build -t aghabekyan374/multi-worker ./worker
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those Images and push them to docker hub
-  - docker push aghabekyan/multi-client
-  - docker push aghabekyan/multi-nginx
-  - docker push aghabekyan/multi-server
-  - docker push aghabekyan/multi-worker
+  - docker push aghabekyan374/multi-client
+  - docker push aghabekyan374/multi-nginx
+  - docker push aghabekyan374/multi-server
+  - docker push aghabekyan374/multi-worker
