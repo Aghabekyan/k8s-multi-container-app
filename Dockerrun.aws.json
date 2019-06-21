@@ -1,36 +1,40 @@
 {
-    "AWSEBDockerrunVersion": 2,
-    "containerDefinitions": [
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "stephengrider/multi-client",
+      "hostname": "client",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "server",
+      "image": "stephengrider/multi-server",
+      "hostname": "api",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "worker",
+      "image": "stephengrider/multi-worker",
+      "hostname": "worker",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "stephengrider/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
         {
-            "name": "client",
-            "image": "aghabekyan374/multi-client",
-            "hostname": "client",
-            "essential": false
-        },
-        {
-            "name": "server",
-            "image": "aghabekyan374/multi-server",
-            "hostname": "api",
-            "essential": false
-        },
-        {
-            "name": "worker",
-            "image": "aghabekyan374/multi-worker",
-            "hostname": "worker",
-            "essential": false
-        },
-        {
-            "name": "nginx",
-            "image": "aghabekyan374/multi-nginx",
-            "hostname": "nginx",
-            "essential": true,
-            "portMappings": [
-                {
-                    "hostPort": 80,
-                    "containerPort": 80
-                }
-            ],
-            "links": ["client", "server"]
+          "hostPort": 80,
+          "containerPort": 80
         }
-    ]
+      ],
+      "links": ["client", "server"],
+      "memory": 128
+    }
+  ]
 }
